@@ -95,6 +95,8 @@ The server binds to `0.0.0.0` and serves the application from `index.html`. The 
 ```text
 .
 ├── app.js                 # Browser interactions and UI state
+├── api/
+│   └── index.js           # Vercel serverless entry point
 ├── app.config.ts          # Project metadata and logo configuration
 ├── index.html             # Semantic dashboard markup
 ├── logo.svg               # TraceMind brand mark and favicon
@@ -144,7 +146,7 @@ npx vercel
 npx vercel --prod
 ```
 
-Vercel uses [`vercel.json`](./vercel.json) for clean URLs and baseline security headers. The root `index.html`, stylesheet, client script, logo, and `public/manus-routes.json` are served as static assets.
+Vercel uses [`vercel.json`](./vercel.json) to route requests through the serverless adapter at [`api/index.js`](./api/index.js), include the static application assets, and apply clean URLs and baseline security headers. The adapter reuses the same request handler as the local Node server, so the application behaves consistently in local development and Vercel production.
 
 ### Netlify
 

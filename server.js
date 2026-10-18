@@ -21,7 +21,7 @@ function safePath(urlPath) {
   return candidate.startsWith(root) ? candidate : path.join(root, 'index.html');
 }
 
-const server = http.createServer((req, res) => {
+function handleRequest(req, res) {
   const filePath = safePath(req.url);
   fs.readFile(filePath, (error, data) => {
     if (error) {
@@ -48,8 +48,13 @@ const server = http.createServer((req, res) => {
     });
     res.end(data);
   });
-});
+}
 
-server.listen(port, '0.0.0.0', () => {
-  console.log(`TraceMind AI listening on http://0.0.0.0:${port}`);
-});
+module.exports = handleRequest;
+
+if (require.main === module) {
+  const server = http.createServer(handleRequest);
+  server.listen(port, '0.0.0.0', () => {
+    console.log(`TraceMind AI listening on http://0.0.0.0:${port}`);
+  });
+}

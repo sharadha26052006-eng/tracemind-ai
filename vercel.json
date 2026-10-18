@@ -1,5 +1,29 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": [
+        "index.html",
+        "styles.css",
+        "app.js",
+        "logo.svg",
+        "public/manus-routes.json"
+      ]
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

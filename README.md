@@ -131,6 +131,32 @@ docker run --rm -p 3000:3000 tracemind-ai
 
 The container exposes port `3000` and honors the `PORT` environment variable at runtime.
 
+## Deploy to Vercel or Netlify
+
+The repository includes configuration for both major static hosting options. No build step or environment variables are required.
+
+### Vercel
+
+Import the GitHub repository into Vercel, or deploy from the project root with the Vercel CLI:
+
+```bash
+npx vercel
+npx vercel --prod
+```
+
+Vercel uses [`vercel.json`](./vercel.json) for clean URLs and baseline security headers. The root `index.html`, stylesheet, client script, logo, and `public/manus-routes.json` are served as static assets.
+
+### Netlify
+
+Import the GitHub repository into Netlify, or deploy from the project root with the Netlify CLI:
+
+```bash
+npx netlify deploy
+npx netlify deploy --prod
+```
+
+Netlify uses [`netlify.toml`](./netlify.toml) to publish the repository root, preserve real static files, provide an SPA fallback, and add baseline security headers.
+
 ## Validation
 
 The project is designed to run without an install step beyond Node.js. Useful checks include:

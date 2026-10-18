@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111a22" />
+    <meta name="description" content="TraceMind AI — an evidence-first investigation workspace." />
+    <title>TraceMind AI — Overview</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <a class="brand" href="#overview" aria-label="TraceMind AI overview">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="currentColor"/><path d="M12.5 14.5h9.2a5.3 5.3 0 0 1 0 10.6h-9.2" stroke="#111A22" stroke-width="3.5" stroke-linecap="round"/><path d="M29.5 27.5h-9.2a5.3 5.3 0 0 1 0-10.6h9.2" stroke="#C9F4DC" stroke-width="3.5" stroke-linecap="round"/></svg>
+            </span>
+            <span><strong>Trace</strong>Mind <em>AI</em></span>
+          </a>
+          <button class="workspace-switcher" type="button" id="workspaceSwitcher">
+            <span class="workspace-icon">N</span>
+            <span class="workspace-copy"><small>Workspace</small><strong>Northstar Labs</strong></span>
+            <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+          </button>
+        </div>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <p class="nav-label">Workspace</p>
+          <button class="nav-item active" data-view="Overview" type="button"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg><span>Overview</span><kbd>1</kbd></button>
+          <button class="nav-item" data-view="Evidence graph" type="button"><svg viewBox="0 0 20 20"><circle cx="5" cy="5" r="2"/><circle cx="15" cy="6" r="2"/><circle cx="10" cy="15" r="2"/><path d="m6.7 6.1 6.5-0.2M6.2 6.7l2.5 6.5m5-5.4-2.3 5.3"/></svg><span>Evidence graph</span><kbd>2</kbd></button>
+          <button class="nav-item" data-view="Sources" type="button"><svg viewBox="0 0 20 20"><path d="M5 3.5h7l3 3v10H5z"/><path d="M12 3.5v3h3M8 10h4m-4 3h4"/></svg><span>Sources</span><span class="nav-count">24</span></button>
+          <button class="nav-item" data-view="Review queue" type="button"><svg viewBox="0 0 20 20"><path d="M4 5h12M4 10h12M4 15h8"/><circle cx="15.5" cy="15" r="2.5"/></svg><span>Review queue</span><span class="nav-count coral">8</span></button>
+          <p class="nav-label secondary-label">Manage</p>
+          <button class="nav-item" data-view="Settings" type="button"><svg viewBox="0 0 20 20"><path d="M8.2 3.8 9 2.5h2l.8 1.3 1.6.7 1.5-.2 1 1.7-.9 1.3.3 1.7 1.1 1v2l-1.1 1-.3 1.7.9 1.3-1 1.7-1.5-.2-1.6.7-.8 1.3H9l-.8-1.3-1.6-.7-1.5.2-1-1.7.9-1.3L4.7 13l-1.1-1v-2l1.1-1L5 7.3 4.1 6l1-1.7 1.5.2 1.6-.7Z"/><circle cx="10" cy="11" r="2.5"/></svg><span>Settings</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="usage-card">
+            <div class="usage-heading"><span>Trace capacity</span><strong>72%</strong></div>
+            <div class="usage-bar"><span style="width: 72%"></span></div>
+            <p>18 of 25 active investigations</p>
+            <button type="button" id="upgradeButton">Manage capacity <span>→</span></button>
+          </div>
+          <div class="profile-row">
+            <span class="avatar">MC</span>
+            <span class="profile-copy"><strong>Maya Chen</strong><small>Research lead</small></span>
+            <button class="more-button" type="button" aria-label="Profile menu">•••</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="crumbs"><button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open navigation"><span></span><span></span></button><span>Northstar Labs</span><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><strong id="breadcrumbCurrent">Overview</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box" for="globalSearch"><svg viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="globalSearch" type="search" placeholder="Search traces, sources..." autocomplete="off"/><kbd>⌘ K</kbd></label>
+            <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme"><svg viewBox="0 0 20 20"><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4m7.8 7.8 1.4 1.4m0-10.6-1.4 1.4m-7.8 7.8-1.4 1.4"/><circle cx="10" cy="10" r="3.5"/></svg></button>
+            <button class="icon-button notification-button" type="button" id="notificationButton" aria-label="Notifications"><svg viewBox="0 0 20 20"><path d="M5.2 8.3a4.8 4.8 0 0 1 9.6 0c0 5 1.8 5.1 1.8 6.3H3.4c0-1.2 1.8-1.3 1.8-6.3ZM8 17h4"/></svg><span></span></button>
+            <span class="topbar-avatar">MC</span>
+          </div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="page-heading">
+            <div>
+              <p class="eyebrow"><span class="live-dot"></span> MONDAY, OCTOBER 19, 2026</p>
+              <h1 id="pageTitle">Good morning, Maya <span>✦</span></h1>
+              <p class="page-subtitle" id="pageSubtitle">Your workspace is clear. Here’s what moved while you were away.</p>
+            </div>
+            <div class="heading-actions"><button class="button button-quiet" id="importButton" type="button"><svg viewBox="0 0 20 20"><path d="M10 3v9m0 0 3.2-3.2M10 12 6.8 8.8M4 15.5v1h12v-1"/></svg>Import sources</button><input id="fileInput" type="file" multiple hidden /><button class="button button-primary" id="newInvestigation" type="button"><span>+</span> New investigation</button></div>
+          </section>
+
+          <section class="trace-assistant" aria-label="TraceMind assistant">
+            <div class="assistant-orbit"><span class="orbit-ring ring-one"></span><span class="orbit-ring ring-two"></span><span class="orbit-core">✦</span></div>
+            <div class="assistant-copy"><strong>TraceMind has a read on your workspace</strong><p>Three sources changed confidence overnight. One may need a second look.</p></div>
+            <button class="text-button" id="askAssistant" type="button">Ask TraceMind <span>↗</span></button>
+          </section>
+
+          <section class="metric-row" aria-label="Workspace metrics">
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon coral-icon"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="6.5"/><path d="M10 6v4l2.5 1.5"/></svg></span><span class="trend up">+12.4%</span></div><strong class="metric-value">24</strong><span class="metric-label">Active traces</span><div class="sparkline coral-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon mint-icon"><svg viewBox="0 0 20 20"><path d="m5 10 3.2 3.2L15 6.5"/></svg></span><span class="trend up">+4.8%</span></div><strong class="metric-value">91<span>%</span></strong><span class="metric-label">Evidence verified</span><div class="sparkline mint-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon lavender-icon"><svg viewBox="0 0 20 20"><path d="M10 3v14M3 10h14"/></svg></span><span class="trend neutral">steady</span></div><strong class="metric-value">08</strong><span class="metric-label">Open questions</span><div class="sparkline lavender-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon sky-icon"><svg viewBox="0 0 20 20"><path d="M4 14.5 8 10l2.5 2 5.5-6"/><path d="M12.5 6H16v3.5"/></svg></span><span class="trend down">−2.1%</span></div><strong class="metric-value">4.2<span>h</span></strong><span class="metric-label">Median review time</span><div class="sparkline sky-spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          </section>
+
+          <section class="dashboard-grid">
+            <article class="panel trace-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">INVESTIGATION / Q3 PRICING</p><h2>Trace map</h2></div><button class="more-button" type="button" aria-label="Trace map menu">•••</button></div>
+              <div class="trace-tabs" role="tablist"><button class="trace-tab active" data-map="Overview" type="button">Overview</button><button class="trace-tab" data-map="Sources" type="button">Sources <span>12</span></button><button class="trace-tab" data-map="Confidence" type="button">Confidence lens</button></div>
+              <div class="map-canvas" id="mapCanvas">
+                <svg class="trace-lines" viewBox="0 0 700 300" preserveAspectRatio="none" aria-hidden="true"><path d="M96 174C153 174 159 72 231 72s47 85 111 85 58-94 126-94 68 69 131 69"/><path d="M96 174c79 0 67 67 135 67s56-84 111-84 68 66 126 66 70-39 131-39"/><path class="faint-line" d="M96 174c72 0 74-116 146-116s52 112 119 112 63-52 107-52 72 39 131 39"/></svg>
+                <div class="trace-node node-root"><span class="node-pulse"></span><strong>Pricing shift</strong><small>Question · 84%</small></div>
+                <div class="trace-node node-one"><span class="node-dot mint-dot"></span><strong>Market signals</strong><small>Verified · 97%</small></div>
+                <div class="trace-node node-two"><span class="node-dot coral-dot"></span><strong>Competitor set</strong><small>AI suggested · 76%</small></div>
+                <div class="trace-node node-three"><span class="node-dot lavender-dot"></span><strong>Margin model</strong><small>Source · 89%</small></div>
+                <div class="trace-node node-four"><span class="node-dot sky-dot"></span><strong>Recommendation</strong><small>Draft · 72%</small></div>
+                <div class="map-axis-label axis-left">ORIGIN</div><div class="map-axis-label axis-right">OUTPUT</div>
+              </div>
+              <div class="map-footer"><div class="legend"><span><i class="legend-dot mint-dot"></i>Verified</span><span><i class="legend-dot coral-dot"></i>Needs review</span><span><i class="legend-dot lavender-dot"></i>AI suggestion</span></div><button class="text-button" id="openGraph" type="button">Open full graph <span>↗</span></button></div>
+            </article>
+
+            <article class="panel activity-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">LIVE FEED</p><h2>Recent activity</h2></div><button class="filter-button" id="activityFilter" type="button">All <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button></div>
+              <div class="activity-list" id="activityList">
+                <div class="activity-item" data-searchable="Aisha verified market signal source 2 min ago"><span class="activity-avatar mint-avatar">AS</span><p><strong>Aisha Singh</strong> verified <b>market signal source</b><small>2 min ago · Q3 Pricing</small></p><span class="activity-check">✓</span></div>
+                <div class="activity-item" data-searchable="TraceMind added a competitor set suggestion 18 min ago"><span class="activity-avatar coral-avatar">✦</span><p><strong>TraceMind</strong> added a <b>competitor set</b> suggestion<small>18 min ago · Q3 Pricing</small></p><span class="activity-spark">✦</span></div>
+                <div class="activity-item" data-searchable="Noah Park opened a question 43 min ago"><span class="activity-avatar sky-avatar">NP</span><p><strong>Noah Park</strong> opened a question on <b>margin model</b><small>43 min ago · Unit Economics</small></p><span class="activity-question">?</span></div>
+                <div class="activity-item" data-searchable="Maya Chen imported 8 sources yesterday"><span class="activity-avatar lavender-avatar">MC</span><p><strong>You</strong> imported <b>8 sources</b><small>Yesterday · Q3 Pricing</small></p><span class="activity-arrow">↗</span></div>
+                <div class="empty-search" id="emptyActivity" hidden>No activity matches this search.</div>
+              </div>
+              <button class="panel-link" id="viewActivity" type="button">View all activity <span>→</span></button>
+            </article>
+          </section>
+
+          <section class="lower-grid">
+            <article class="panel signal-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">SOURCE HEALTH</p><h2>Signal quality</h2></div><button class="filter-button" type="button">Last 30 days <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button></div>
+              <div class="signal-summary"><strong>87.6</strong><span>/ 100</span><em><svg viewBox="0 0 14 14"><path d="m2 9 3-3 2 2 4-5"/><path d="M8.5 3.5H11V6"/></svg> 6.2%</em></div>
+              <div class="bar-chart" aria-label="Source quality over the last seven days"><div class="chart-y"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><div class="chart-bars"><div><i style="height:54%"></i><small>Mon</small></div><div><i style="height:67%"></i><small>Tue</small></div><div><i style="height:61%"></i><small>Wed</small></div><div><i style="height:78%"></i><small>Thu</small></div><div><i style="height:72%"></i><small>Fri</small></div><div><i style="height:88%"></i><small>Sat</small></div><div class="current"><i style="height:91%"></i><small>Sun</small></div></div></div>
+              <div class="source-footnote"><span><i class="legend-dot mint-dot"></i>Verified sources</span><strong>21 <small>of 24</small></strong></div>
+            </article>
+
+            <article class="panel review-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">YOUR NEXT MOVES</p><h2>Review queue <span class="heading-count">8</span></h2></div><button class="text-button" id="queueViewAll" type="button">View all <span>→</span></button></div>
+              <div class="review-list" id="reviewList">
+                <div class="review-item" data-searchable="Confirm competitor pricing source high priority"><button class="review-check" type="button" aria-label="Mark Confirm competitor pricing source as reviewed"></button><div><strong>Confirm competitor pricing source</strong><p><span class="priority high">High</span> Competitor set <span class="review-separator">·</span> 12 min ago</p></div><button class="review-open" type="button" aria-label="Open review">↗</button></div>
+                <div class="review-item" data-searchable="Resolve conflicting margin assumptions medium priority"><button class="review-check" type="button" aria-label="Mark Resolve conflicting margin assumptions as reviewed"></button><div><strong>Resolve conflicting margin assumptions</strong><p><span class="priority medium">Medium</span> Margin model <span class="review-separator">·</span> 1h ago</p></div><button class="review-open" type="button" aria-label="Open review">↗</button></div>
+                <div class="review-item" data-searchable="Add source for regional adoption rate medium priority"><button class="review-check" type="button" aria-label="Mark Add source for regional adoption rate as reviewed"></button><div><strong>Add source for regional adoption rate</strong><p><span class="priority medium">Medium</span> Market signals <span class="review-separator">·</span> 3h ago</p></div><button class="review-open" type="button" aria-label="Open review">↗</button></div>
+                <div class="review-item" data-searchable="Validate recommendation sensitivity low priority"><button class="review-check" type="button" aria-label="Mark Validate recommendation sensitivity as reviewed"></button><div><strong>Validate recommendation sensitivity</strong><p><span class="priority low">Low</span> Recommendation <span class="review-separator">·</span> Yesterday</p></div><button class="review-open" type="button" aria-label="Open review">↗</button></div>
+                <div class="empty-search" id="emptyReview" hidden>No review items match this search.</div>
+              </div>
+            </article>
+          </section>
+          <footer class="page-footer"><span>TraceMind AI · Research workspace</span><span><i class="status-dot"></i> All systems operational</span></footer>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close dialog">×</button>
+        <span class="modal-icon">✦</span>
+        <p class="panel-kicker">NEW WORKSPACE THREAD</p>
+        <h2 id="modalTitle">Start an investigation</h2>
+        <p class="modal-intro">Give your next question a home. TraceMind will help you keep every answer connected to evidence.</p>
+        <form id="investigationForm">
+          <label for="investigationName">Investigation name <span>*</span></label>
+          <input id="investigationName" name="name" required placeholder="e.g. Q4 retention signals" />
+          <label for="investigationFocus">First focus <span>*</span></label>
+          <textarea id="investigationFocus" name="focus" required rows="3" placeholder="What are you trying to understand?"></textarea>
+          <div class="modal-actions"><button class="button button-quiet" id="modalCancel" type="button">Cancel</button><button class="button button-primary" type="submit">Create investigation <span>→</span></button></div>
+        </form>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-mark">✓</span><span id="toastText">Done</span></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

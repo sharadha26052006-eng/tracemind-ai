@@ -137,6 +137,19 @@ The container exposes port `3000` and honors the `PORT` environment variable at 
 
 The repository includes configuration for both major static hosting options. No build step or environment variables are required.
 
+### Environment variables and secrets
+
+TraceMind AI currently has no required application secrets or third-party API keys. The local server reads `PORT` when running outside Vercel; Vercel supplies the runtime port automatically.
+
+For future server-only credentials, add them in **Vercel → Project Settings → Environment Variables** or with the Vercel CLI instead of committing them to Git:
+
+```bash
+vercel env add EXAMPLE_API_KEY production
+vercel env add EXAMPLE_API_KEY preview
+```
+
+Use the variable from server-side code with `process.env.EXAMPLE_API_KEY`. Never place private credentials in browser JavaScript, variables prefixed with `NEXT_PUBLIC_`, `index.html`, or committed `.env` files. The repository includes [`.env.example`](./.env.example) as a non-secret template and ignores `.env*` files by default.
+
 ### Vercel
 
 Import the GitHub repository into Vercel, or deploy from the project root with the Vercel CLI:
